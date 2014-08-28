@@ -1,0 +1,19 @@
+.class
+
+#pliki konfiguracyjne eclipse nie dodajemy do repo:
+.classpath
+.project
+.settings/
+#to co generuje maven też nie dodajemy do repo
+target/
+#inne pliki zaczynające się od kropki też nie dodajemy do repo i systematycznie uzupełniamy gitignore
+.springBeans
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
