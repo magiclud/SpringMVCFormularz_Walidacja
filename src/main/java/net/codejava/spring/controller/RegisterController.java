@@ -50,6 +50,7 @@ public class RegisterController {
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String processRegistration(@Valid User user,
 			BindingResult bindingResult, Model model) {
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (bindingResult.hasErrors()) {
 			logger.info("Returning Registration.jsp page");
 			return "Registration";
