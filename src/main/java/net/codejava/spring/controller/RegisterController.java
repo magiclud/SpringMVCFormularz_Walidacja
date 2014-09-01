@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/register")
+//@RequestMapping(value = "/register")
 public class RegisterController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(RegisterController.class);
@@ -47,7 +47,7 @@ public class RegisterController {
 	// @RequestMapping(value = "/register",method = RequestMethod.POST)
 	// public String processRegistration(@ModelAttribute("userForm") User user,
 	// Map<String, Object> model) {
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String processRegistration(@Valid User user,
 			BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {

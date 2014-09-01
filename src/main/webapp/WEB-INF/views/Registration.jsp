@@ -17,7 +17,7 @@
 </head>
 <body>
     <div align="center">
-        <form:form action="register" method="post" commandName="userForm" >
+        <form:form action="register.do" method="post" commandName="userForm" >
             <table border="0">
                 <tr>
                     <td colspan="2" align="center"><h2>Spring MVC Form Demo - Registration</h2></td>
