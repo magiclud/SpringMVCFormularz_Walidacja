@@ -52,7 +52,9 @@ public class RegisterController {
 			BindingResult bindingResult, Model model) {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (bindingResult.hasErrors()) {
-			logger.info("Returning Registration.jsp page");
+			logger.info("Wszedl do if Registration.jsp page");
+			logger.error("SOME ERRORS",bindingResult);
+			logger.toString();
 			return "Registration";
 		}
 		logger.info("Returning RegistrationSuccess.jsp page");
