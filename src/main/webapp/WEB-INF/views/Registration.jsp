@@ -17,7 +17,7 @@
 </head>
 <body>
     <div align="center">
-        <form:form action="register.do" method="post" commandName="userForm" >
+        <form:form action="register" method="post" commandName="userForm" >
             <table border="0">
                 <tr>
                     <td colspan="2" align="center"><h2>Spring MVC Form Demo - Registration</h2></td>
@@ -49,6 +49,7 @@
                 <tr>
                     <td>Birthday (mm/dd/yyyy):</td>
                     <td><form:input path="birthDate" /></td>
+                     <td><form:errors path="birthDate" cssClass="error" /></td>
                 </tr>
                 <tr>
                 <td>Phone:</td>
@@ -58,6 +59,7 @@
                 <tr>
                     <td>Profession:</td>
                     <td><form:select path="profession" items="${professionList}" /></td>
+                    <td><form:errors path="profession" cssClass="error" /></td>
                 </tr>
                 <tr>
                     <td colspan="3" align="center"><input type="submit" value="Register" /></td>

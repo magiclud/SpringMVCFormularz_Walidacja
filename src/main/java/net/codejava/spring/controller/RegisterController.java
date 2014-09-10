@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,14 +48,13 @@ public class RegisterController {
 	// @RequestMapping(value = "/register",method = RequestMethod.POST)
 	// public String processRegistration(@ModelAttribute("userForm") User user,
 	// Map<String, Object> model) {
-	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
-	public String processRegistration(@Valid User user,
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String processRegistration( @ModelAttribute("userForm")@Valid User user ,
 			BindingResult bindingResult, Model model) {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (bindingResult.hasErrors()) {
 			logger.info("Wszedl do if Registration.jsp page");
-			logger.error("SOME ERRORS",bindingResult);
-			logger.toString();
+			logger.error("SOME ERRORS" + bindingResult);
 			return "Registration";
 		}
 		logger.info("Returning RegistrationSuccess.jsp page");

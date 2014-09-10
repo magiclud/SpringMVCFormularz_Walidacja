@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
-@Component("registrationValidator")
+//@Component("registrationValidator")
 public class RegistrationValidation {
 
 	public boolean supports(Class<?> klass) {
