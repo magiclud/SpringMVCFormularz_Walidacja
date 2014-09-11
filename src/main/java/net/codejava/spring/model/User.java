@@ -11,6 +11,7 @@ import net.codejava.spring.validator.Phone;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class User {
@@ -29,6 +30,7 @@ public class User {
 	private Date birthDate;
 	private String profession;
 	@Phone
+	@Size(min=2, max=9)
 	private String phone;
 	@NotNull
 	private Gender gender;
