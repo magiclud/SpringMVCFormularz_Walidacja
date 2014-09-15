@@ -13,20 +13,14 @@
 </head>
 <body>
 	<div align="center">
-		<form:form action="register" method="post" commandName="userForm">
-			<h3>Registration goes succesfully.</h3>
-			<strong>User Name:${user.username}</strong>
-			<br>
-			<strong>User Email:${user.email}</strong>
-			<br>
-			<strong>User Gender:${user.gender}</strong>
-			<br>
-			<strong>User Birthday:<fmt:formatDate
-					value="${customer.birthday}" type="date" /></strong>
-			<br>
-Please login now 
-<a href="${pageContext.servletContext.contextPath}/login">logowanie</a>
-		</form:form>
+
+		<h3>Registration goes succesfully.</h3>
+		<strong>User Name:${user.username}</strong> <br> <strong>User
+			Email:${user.email}</strong> <br> <strong>User
+			Gender:${user.gender}</strong> <br> <strong>User Birthday:<fmt:formatDate
+				value="${user.birthDate}" type="date" /></strong> <br>  <br> <br>Please login
+		now <a href="${pageContext.servletContext.contextPath}/login">logowanie</a>
+
 	</div>
 </body>
 </html>

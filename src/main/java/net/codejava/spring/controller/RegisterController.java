@@ -58,7 +58,7 @@ public class RegisterController {
 			return "Registration";
 		}
 		logger.info("Returning RegistrationSuccess.jsp page");
-		model.addAttribute("userForm", user);
+		model.addAttribute("user", user);
 		users.put(user.getEmail(), user);
 
 		System.out.println("username: " + user.getUsername());
