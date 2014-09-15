@@ -67,7 +67,7 @@ public class RegisterController {
 		System.out.println("birth date: " + user.getBirthDate());
 		System.out.println("profession: " + user.getProfession());
 
-		return "RegistrationSuccesss";
+		return "RegistrationSuccess";
 	}
 
 }
