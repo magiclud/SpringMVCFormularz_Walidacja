@@ -29,6 +29,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 //	public PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
 //		return new PropertySourcesPlaceholderConfigurer();
 //	}
+	
+	
 
 	@Bean
 	public ViewResolver getViewResolver() {
