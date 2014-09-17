@@ -158,6 +158,13 @@
 		</dependency>
 
 
+		<!-- hibernate itp. -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -195,11 +202,11 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
-				<plugin>
-					<groupId>org.mortbay.jetty</groupId>
-					<artifactId>maven-jetty-plugin</artifactId>
-					<version>6.1.26</version>
-				</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.26</version>
+			</plugin>
 		</plugins>
 	</build>
 </project>
