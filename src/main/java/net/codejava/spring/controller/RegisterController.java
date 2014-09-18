@@ -8,18 +8,21 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import net.codejava.spring.model.User;
+import net.codejava.spring.service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-//@RequestMapping(value = "/register")
+// @RequestMapping(value = "/register")
 public class RegisterController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(RegisterController.class);
@@ -30,12 +33,19 @@ public class RegisterController {
 		users = new HashMap<String, User>();
 	}
 
+	@Autowired
+	private UserService userService;
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String viewRegistration(Map<String, Object> model) {
 		logger.info("Returning Registration.jsp page");
-		User userForm = new User();
-		model.put("userForm", userForm);
 
+		User userForm = new User();
+		model.put("user", userForm);
+		model.put("userList", userService.listUser());
+
+		userService.addUser(userForm);
+		
 		List<String> professionList = new ArrayList<>();
 		professionList.add("Developer");
 		professionList.add("Designer");
@@ -49,15 +59,20 @@ public class RegisterController {
 	// public String processRegistration(@ModelAttribute("userForm") User user,
 	// Map<String, Object> model) {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String processRegistration( @ModelAttribute("userForm")@Valid User user ,
+	public String processRegistration(
+			@ModelAttribute("userForm") @Valid User user,
 			BindingResult bindingResult, Model model) {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out
+				.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (bindingResult.hasErrors()) {
 			logger.info("Wszedl do if Registration.jsp page");
 			logger.error("SOME ERRORS" + bindingResult);
 			return "Registration";
 		}
 		logger.info("Returning RegistrationSuccess.jsp page");
+		
+		userService.addUser(user);
+		
 		model.addAttribute("user", user);
 		users.put(user.getEmail(), user);
 
@@ -68,6 +83,14 @@ public class RegisterController {
 		System.out.println("profession: " + user.getProfession());
 
 		return "RegistrationSuccess";
+	}
+
+	@RequestMapping("/delete/{userId}")
+	public String deleteContact(@PathVariable("userId") Integer contactId) {
+
+		userService.removeUser(contactId);
+
+		return "Registration";
 	}
 
 }
