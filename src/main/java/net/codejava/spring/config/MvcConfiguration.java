@@ -1,5 +1,6 @@
 package net.codejava.spring.config;
 
+import java.awt.print.Book;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -26,7 +27,9 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SuppressWarnings("unused")
 @Configuration
 @ComponentScan(basePackages = "net.codejava.spring")
@@ -118,5 +121,24 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		return b;
 	}
 
-	
+	@Bean
+	// Injectible Transaction Manager Bean
+	public HibernateTransactionManager createTransactionManager(){
+	HibernateTransactionManager transactionManager=new HibernateTransactionManager();
+	transactionManager.setSessionFactory(createSessionFactoryBean().getObject());
+	return transactionManager;
+	}
+	@Bean
+	// Injectible Hibernate SessionFactory Bean
+	public LocalSessionFactoryBean createSessionFactoryBean(){
+	LocalSessionFactoryBean localSessionFactoryBean=new LocalSessionFactoryBean();
+	Properties properties=new Properties();
+	properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5InnoDBDialect");
+	properties.setProperty("hibernate.hbm2ddl.auto","create");
+	properties.setProperty("hibernate.show_sql","true");
+	localSessionFactoryBean.setHibernateProperties(properties);
+	localSessionFactoryBean.setAnnotatedClasses(new Class<?>[]{Book.class});
+	localSessionFactoryBean.setDataSource(dataSource());
+	return localSessionFactoryBean;
+	}
 }
