@@ -71,8 +71,8 @@
 		</form:form>
 	</div>
 
-	<h3>Contacts</h3>
-	<c:if test="${!empty contactList}">
+	<h3>Users</h3>
+	<c:if test="${!empty userList}">
 		<table class="data">
 			<tr>
 				<th>Name</th>
@@ -80,12 +80,12 @@
 				<th>Telephone</th>
 				<th>&nbsp;</th>
 			</tr>
-			<c:forEach items="${contactList}" var="contact">
+			<c:forEach items="${userList}" var="user">
 				<tr>
-					<td>${contact.lastname},${contact.firstname}</td>
-					<td>${contact.email}</td>
-					<td>${contact.telephone}</td>
-					<td><a href="delete/${contact.id}">delete</a></td>
+					<td>${user.username}</td>
+					<td>${user.email}</td>
+					<td>${user.phone}</td>
+					<td><a href="delete/${user.id}">delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>

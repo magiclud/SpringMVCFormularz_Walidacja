@@ -37,7 +37,7 @@ public class RegisterController {
 	private UserService userService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String viewRegistration(Map<String, Object> model) {
+	public String listUsers(Map<String, Object> model) {
 		logger.info("Returning Registration.jsp page");
 
 		User userForm = new User();
@@ -59,7 +59,7 @@ public class RegisterController {
 	// public String processRegistration(@ModelAttribute("userForm") User user,
 	// Map<String, Object> model) {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String processRegistration(
+	public String addUser(
 			@ModelAttribute("userForm") @Valid User user,
 			BindingResult bindingResult, Model model) {
 		System.out
@@ -86,9 +86,9 @@ public class RegisterController {
 	}
 
 	@RequestMapping("/delete/{userId}")
-	public String deleteContact(@PathVariable("userId") Integer contactId) {
+	public String deleteUser(@PathVariable("userId") Integer userId) {
 
-		userService.removeUser(contactId);
+		userService.removeUser(userId);
 
 		return "Registration";
 	}
